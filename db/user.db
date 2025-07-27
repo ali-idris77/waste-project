@@ -1,0 +1,9 @@
+{"email":"waka@gmail.com","username":"waka","password":"$2b$10$XOvQKNKtQXLbJbrJE1QsduSZHNjnWINkvdhkRa4nlI./KeCE9TC.W","createdAt":{"$$date":1748214352792},"role":"seller","_id":"8hntYjKcUI8fvOgy","ad_status":"active"}
+{"email":"koro@google.com","username":"koro","password":"$2b$10$Mk5Pknh1GcRy1aP1uTMjxOLALfF4gX0M/dL396D0zU2QflRw1t0Ym","createdAt":{"$$date":1748591584331},"role":"admin","_id":"EcgMSM1iJXRZgeKO"}
+{"email":"luigi@google.com","username":"luigi","password":"$2b$10$RlSTexZxrek3Q47o7v/bQ.9pibwqOS9LKvxiW38bQ4P7NyUqvU8xC","createdAt":{"$$date":1748885171465},"role":"seller","_id":"ExsFs4KrK0DURvXC","company":"Mario & Luigi Plumbings","level":"COO","tel":"0003482284","address":"swiss alley","updatedAt":{"$$date":1749941858339}}
+{"email":"mario@gmail.com","username":"mario","password":"$2b$10$ugnFNCr59wtA5qgk6J4d2O5M.UdLSzFURIDSePlmh.n6EA9mKdtRu","createdAt":{"$$date":1748129194925},"role":"buyer","_id":"KeCaQ9JCVMu57yGy"}
+{"email":"sempai429@yahoo.com","username":"senpai","password":"$2b$10$Onwy8GSiycavgocjFFj/Deq9L/Obc8x7Qrz9jpq6sO0qCI93chDgi","createdAt":{"$$date":1753369060794},"role":"seller","_id":"MUlVGRa3tcAU9FZW"}
+{"email":"sempai419@yahoo.com","username":"senpai","password":"$2b$10$SiHckrjsB.QGW8MN70ETgeajASrXbMIneRRzjBI65m9AuUf23/dbi","createdAt":{"$$date":1753368978645},"role":"buyer","_id":"R4wyXH6OK1Xjvjmr"}
+{"email":"korio@google.com","username":"koro2","password":"$2b$10$fQ8VBbNCJ0RsmvqP7SGJ.OSdQzb13CfJGSuXGDBf3.qMtXM03hjO.","createdAt":{"$$date":1748595637032},"role":"buyer","_id":"bvVqwkDDhbOJ5BMr","ad_status":"suspended"}
+{"email":"mahdi@test.com","username":"mahdi","password":"$2b$10$/2kBkS9XS51vlVJVyk4oquqBCH0fFtTPgjHKTc9OnKMp6uQg4VhIO","createdAt":{"$$date":1750790098400},"role":"seller","_id":"ylXchUgua6kz2itT"}
+{"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}

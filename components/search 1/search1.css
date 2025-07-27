@@ -1,0 +1,44 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+body{
+    background: rgb(221, 166, 15);
+}
+.searchdiv input{
+    outline: none;
+    border: 0;
+    width: 250px;
+    padding: 5px 10px;
+    height: 20px;
+}
+.searchdiv{
+    position: relative;
+    width: fit-content;
+    margin-bottom: 10px;
+    display: flex;
+} .ico{
+    color: rgb(7, 7, 7);
+    padding: 5px 10px;
+    padding-right: 15px;
+    background: aqua;
+    height: 20px;
+    width: 30px;
+    font-size: small;
+    display: grid;
+    place-items: center;
+    text-align: start;
+}
+
+.sea1 input{
+    width: 305px;  
+    border-radius: 15px ;
+}
+.sea1 .ico{
+    padding-right: 15px;   
+    position: absolute;
+    right: 3px;
+    top: 2.5px;
+    height: 50%;
+    border-radius: 15px ;
+}

@@ -1,0 +1,5 @@
+{"userId":"8hntYjKcUI8fvOgy","message":"admin deleted a product","type":"admin","createdAt":{"$$date":1750378728129},"_id":"2E965sW4SK1w6cAe"}
+{"userId":"ylXchUgua6kz2itT","message":"user listed product trash","type":"listings","createdAt":{"$$date":1750790307728},"_id":"83DBO2pntpkI4x6L"}
+{"userId":"ylXchUgua6kz2itT","message":"user added plummer hat to cart","type":"order","createdAt":{"$$date":1750790547239},"_id":"FIOIyCFVs3AYNAQe"}
+{"userId":"ylXchUgua6kz2itT","message":"user created an order for plummer hat","type":"order","createdAt":{"$$date":1750790622085},"_id":"m9ZIbZ6piipHGvgd"}
+{"userId":"8hntYjKcUI8fvOgy","message":"user listed product paper","type":"listings","createdAt":{"$$date":1750374901664},"_id":"mmzKufoaCRaU1tO8"}
