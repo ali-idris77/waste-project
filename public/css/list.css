@@ -1,0 +1,129 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: rgb(215, 243, 216);
+    font-family: Arial, sans-serif;
+    display: flex;
+  }
+  main{
+    width: 80vw;
+    transform: translateX(30px);
+    animation: swoop 0.5s ease-in forwards;
+  }
+.listForm{
+    display:grid;
+    place-content: center;
+    padding: 20px auto;
+}
+h2{
+    margin-top:5vw ;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    text-transform: capitalize;
+}
+form{
+    position: absolute;
+    left: 50%;
+    top: 8vw;
+    border-radius: 20px;
+    padding: 20px 25px;
+    border: 3px solid hsl(128, 64%, 14%);
+}
+.formsyo{
+    position: relative;
+    left: 20%;
+    top: 0;
+}
+.h2yo{
+    margin-top: 0;
+    margin: 20px 0;
+    left: 20%;
+}
+input, .last{
+    display: block;
+    width: 30vw;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 3px solid hsl(128, 64%, 14%);
+    outline: none;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    background: transparent;
+}
+.hide{
+    display: none;
+}
+.last{
+    background: hsl(128, 64%, 14%);
+    color: #fff;
+    width: 100%;
+    cursor: pointer;
+}
+.message{
+    position: relative;
+    left: 0;
+}
+label{
+    font-size: 1.2rem;
+    display: inline-block;
+    margin: 10px 0;
+}
+select{
+    appearance: none;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px 20px;
+    border: 3px solid hsl(128, 64%, 14%);
+    display: block;
+    background: url(/images/keyboard_arrow_down_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg) no-repeat 90% 50%;
+}
+.formField{
+    margin: 10px 0;
+}
+.escape{
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    padding: 10px;
+    border: 4px solid hsl(128, 64%, 14%);
+    border-radius: 50%;
+}
+.escape svg{
+    transition: all 0.3s ease-in-out;
+    height: 50px;
+    width: 50px;
+    fill: hsl(128, 64%, 14%);
+}
+.escape:hover, .escape:active{
+    background-color: hsl(128, 64%, 14%);
+}
+.escape:hover svg, .escape:active svg{
+    fill: rgb(202, 240, 198);
+}
+.escape:active{
+    transform: scale(0.9);
+}
+.formField.error input{
+    border: 3px red solid;
+}
+.formField.error{
+    color: red;
+}
+.formField.error .message{
+    display: block;
+    position: relative;
+    right: 4vw;
+}
+.formField.success input{
+    border: 3px green solid;
+}
+.formField.success{
+    color: green;
+}

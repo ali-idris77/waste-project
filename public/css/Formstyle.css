@@ -1,0 +1,407 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    width: 100vw;
+    background: #ebe8e8;
+    overflow: hidden;
+}
+.img{
+    z-index: 2;
+}
+button {
+    max-width: 400px;
+    width: 400px;
+    padding: 5px 15px;
+    outline: none;
+    border: 0;
+    border-radius: 20px;
+    height: 40px;
+    margin-bottom:10px ;
+    box-shadow: 4px 4px 4px #00000031;
+    font-size: 16px;
+    transition: all .2s ease-in-out;
+    
+}
+button:active{
+    size: 0%;
+    background: #5e5d5d4d;
+    box-shadow: 0;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+form input{
+    width: 400px;
+    outline: none;
+    height: 45px;
+    border-radius: 20px;
+    border: 0;
+    background: #d9d9d9;
+    padding: 0 10px ;
+    text-align: left;
+    flex-wrap: wrap;
+}
+.li{
+    display: flex;
+    max-width: 100%;
+    width: 400px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.gtt{
+    border-bottom: 1px solid #d9d9d9;
+    width: 100%;
+    height: 1px;
+    position: relative;
+    top: 8px;
+}
+.li p {
+    margin: 0 5px;
+    font-size: 12px;
+}
+.botdiv{
+    font-size: .75rem;
+}
+.botdiv a {
+    text-decoration: none;
+    color: #7b6c05;
+}
+.roe{
+    max-width: 150px;
+    width: 150px;
+    height: 35px;
+    background: #7b6c05;
+    font-size:16px ;
+    color: #ffff;
+    box-shadow: none;
+}
+main{
+    display: flex;
+flex-direction: column;
+align-items: center;
+overflow: hidden;
+box-sizing: border-box;
+}
+.topdiv{
+    background-image: url(../images/unsplash_lpKWfxRQb4E.png);
+    max-width: 100%;
+    width: 1440px;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 0.7rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.topdiv::after{
+    content: ' ';
+    background-image: linear-gradient(#000000e0,rgba(126, 125, 125, 0.452));
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+position: absolute;
+bottom: 0;
+left: 0;
+}
+.a-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ltto{
+    display: flex;
+    gap: 10px;
+    max-width: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.ltto button{
+    max-width: 70%;
+    width: 190px;
+    height: 30px;
+    font-size: 12px;
+    
+}
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin:20px 0;
+}
+.feeler{
+    text-align: left;
+}
+select{
+    background: url(/images/keyboard_arrow_down_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg) no-repeat 90% 50%;
+    appearance: none;
+    outline: none;
+    text-align: left;
+    width: 150px;
+    height: 40px;
+    font-size: 1rem;
+    border-radius: 5px;
+    align-self: start;
+}
+.google{
+    background-image: url(/images/Google_Icons.webp);
+    background-repeat: no-repeat;
+    background-position: 90px 6px;
+    background-size: 7%;
+}
+.feel.error input{
+    border: 2px red solid;
+}
+.feel.error{
+    color: red;
+}
+.feel.error .message{
+    display: block;
+    position: relative;
+    left: 0;
+}
+.feel.success input{
+    border: 2px green solid;
+}
+.feel.success{
+    color: green;
+}
+@media (min-width:1200px){
+    body {
+        height: 100vh;
+    }
+    main {
+        border-radius: 20px;
+        background: rgb(232, 233, 229);
+    flex-direction: row;
+    padding: 10px;
+    box-shadow: 1px 1px 10px rgba(173, 173, 173, 0.74);
+    overflow: none;
+    }
+    .topdiv{
+        width: 500px;
+        border-radius: 20px 0 0 20px;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+    .topdiv::after{
+        border-radius: 20px 0 0 20px;
+    }
+    
+}
+@media (max-width: 1199px) {
+    body {
+        height: 100vh;
+        background: rgb(232, 233, 229);
+    }
+    main {
+        position: relative;
+        top: -200px;
+        border-radius:30px;
+        padding: 10px;
+        /* width: 100vw;
+        height: 100vh; */
+    background: rgb(255, 255, 255);
+    box-shadow: 1px 1px 10px rgba(173, 173, 173, 0.74);
+}    
+    .topdiv{
+        width: 600px;
+        border-radius: 20px 20px 0 0;
+    }
+    .topdiv::after{
+        width: 600px;
+        border-radius: 20px 20px 0 0;
+    }
+}    
+@media (max-width:1049px){
+    main {
+        top: 0;
+        border-radius: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgb(232, 233, 229);
+        margin: 0;
+        padding:10px ;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+    .topdiv{
+        border-radius: 20px 20px 0 0;
+        max-width: 100%;
+         width: 1440px;
+        height: 600px;
+        margin-bottom: 0.7rem;
+    }
+    .topdiv::after{
+        height: 600px;
+        width: 1440px;
+        border-radius: 20px 20px 0 0;
+    }
+    button{
+        max-width: 100%;
+        width: 550px;
+    }
+    .google{
+        background-position: 150px 1px ;
+    }
+    .form{
+        gap: 10px;
+    }
+
+    .ltto button{
+        width: 270px;
+    }
+    .words{
+        max-width: 759px;
+        width:759px ;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    form input{
+        max-width: 600px;
+        width: 530px;
+    }
+@media (max-width:759px){
+    main {
+            width: 100vw;
+            height: 100vh;
+            background: rgb(232, 233, 229);
+            margin: 0;
+            box-shadow: 0;
+        }
+        .topdiv{
+            margin: 0;
+            max-width: 100%;
+            height: 600px;
+            border-radius: 0;
+        }
+        .topdiv::after{
+            height: 600px;
+        }
+        button{
+            max-width: 100%;
+            width: 430px;
+        }
+
+        .ltto button{
+            width: 210px;
+        }
+        .words{
+            max-width: 759px;
+            width:759px ;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .form{
+            gap: 10px;
+        }
+        form input{
+            max-width: 500px;
+            width: 430px;
+        }
+        .google{
+            background-position: 100px 6px ;
+        }
+        .radio{
+            margin-right: 10vw;
+        }
+}
+
+@media (max-width:499px){
+    main {
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(232, 233, 229);;
+        margin: 0;
+        padding: 0;
+        
+    }
+    .topdiv{
+        max-width: 100%;
+        max-height: 375px;
+    }
+    .words{
+        max-width: 100%;
+    }
+    button{
+        max-width: 80%;
+        width: 310px;
+       
+    }
+    .google{
+        background-position: 40px 11px ;
+    }
+    .ltto button{
+        max-width: 150px;
+    }
+    form input{
+        max-width: 80%;
+        width: 350px;
+    }
+    .radio{
+            margin-right: 10vw;
+        }
+}
+@media(max-width:350px){
+    .ltto button{
+        max-width: 130px;
+    }
+    form input{
+        max-width: 80%;
+        width: 300px;
+    }
+    .google{
+        background-position: 30px 12px ;
+    }
+}
+@media(orientation:landscape){
+    main{
+        flex-direction: row;
+       overflow: auto;
+    }
+    /* .topdiv{
+        border-radius: 20px;
+    }
+    .topdiv::after{
+        border-radius: 20px;
+    } */
+}
+.message{
+    color: red;
+    font-size: 12px;
+    margin: 0;
+    position: relative;
+    left: -160px;
+}
+.feel.err input{
+    background: rgba(255, 0, 0, 0.171);
+}
+/* .feel.success input{
+    background: rgba(0, 255, 0, 0.171); 
+} */
+
+.err{
+    background: rgba(255, 0, 0, 0.171);
+}}
