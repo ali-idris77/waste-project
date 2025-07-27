@@ -1,0 +1,61 @@
+<style>
+        
+        .show{
+         display: flex;
+        }
+        .loader {
+            border: 8px solid #02160f;
+            border-top: 8px solid #c7f5d6;
+            border-left: 8px solid #c7f5d6;
+            border-radius:0 0  50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear  infinite;
+            position: absolute;
+            top: 50vh;
+            left: 50vw;
+            display: none;
+            
+             z-index: 100;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: scale(1)
+                rotate(0deg) ;
+            }25%{
+                transform: scale(1.1)
+                rotate(0deg);
+            }
+            50% {
+                transform: scale(1.2)
+                rotate(360deg); 
+
+            }
+            100% {
+                transform: scale(1)
+                rotate(720deg);
+            }
+    
+        }
+        @keyframes twirl {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #c7f5d6, 0 0 10px #c7f5d6, 0 0 15px #c7f5d6;
+            }
+            100% {
+                box-shadow: 0 0 10px #c7f5d6, 0 0 20px #c7f5d6, 0 0 30px #c7f5d6;
+            }
+        }
+    </style>
+
+<div class="wrapper">
+    <div class="loader" id="load"></div>
+</div>

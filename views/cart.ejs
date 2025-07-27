@@ -1,0 +1,118 @@
+<link rel="stylesheet" href="/css/styles.css">
+  <%- include('./partials/loader.ejs') %> 
+<%- include('./partials/ret.ejs', {retUrl:'/dashboard'}) %>
+<main class="cart">
+     <section class="carts">
+        <h2>My carts</h2>
+<div class="cartedDiv divs">
+        <% if (cart && cart.length > 0) { %>
+         <ul class="cartul orderul">
+            <% cart.forEach(carts => { %>
+             <li>
+                <div class="cartlist" onclick="location.href='/cart/<%=carts._id%>'">
+                    <div class="prod-jpg">
+                        <% if (carts.filePath) { %>
+                           <img src="<%= carts.filePath%> " class="product cartI" alt="" srcset="">
+                        <% }else{ %>
+                      <img src="../../images/img.png" class="product cartI" alt="">
+                      <% } %>
+                    </div>
+                    <div class="cartdes">
+                        <h3>seller: <%=carts.seller %></h3>
+                        <p>Product: <%=carts.name  %></p>
+                        <p>Quantity: <%=carts.qty  %></p>
+                        <p class="price">Price: <%=carts.price  %></p>
+                        <p class="cart_date">added on: <%=carts.addedAt  %></p>
+                    </div>
+                    
+                </div>
+                <button class="dlist adro" data-product-id="<%= carts._id %> " >
+             <svg class="more" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+              </button>
+             </li>
+            <% }) %>
+           <p>TOTAL:<span id="total"></span></p> 
+           
+         </ul>
+        </div>
+    </section>
+     <button id="checkout" class="checkout">CHEKOUT</button>
+        <% }else{ %>
+           <h2>you haven't carted yet</h2> 
+     <% } %>
+</main>
+<%- include('./partials/popup')%>
+<script>
+  const load = document.getElementById('load');
+  const checkout = document.getElementById('checkout');
+  const cartItem = JSON.parse('<%- JSON.stringify(cart) %>');
+  const total =document.getElementById('total');
+
+console.log(cartItem)
+function calculateSum(){
+   const sumtotal = cartItem.reduce((sum, item)=>{
+   return sum+ (item.price ||0)}, 0)
+   console.log(sumtotal)
+   total.textContent = sumtotal;
+}
+calculateSum()
+      '<% if (cart && cart.length > 0) { %>'
+      checkout.addEventListener('click', async()=>{      
+       try{
+         load.classList.add('show')
+         const res = '<% cart.forEach(carts => { %>'
+        await fetch('/order', {
+                method:'POST',
+                headers:{'Content-Type': 'Application/json'},
+                body: JSON.stringify({
+                   userId: '<%=user._id%>',
+                   username:'<%=user.username%>',
+                   productId: '<%=carts.productId%>',
+                   filePath: '<%=carts.filePath%>',
+                   sellerId:'<%=carts.sellerId%>',
+                   name: '<%=carts.name%>',
+                   qty:'<%=carts.qty%>',
+                   price:'<%=carts.price%>',
+                   cartId:'<%= carts._id%>',
+                   carted:true
+                })
+            })
+        '<%})%>'
+        const stripeRes = await fetch('/create-checkout-session', {
+         method:'POST',
+         headers:{'Content-Type': 'Application/json'},
+         body: JSON.stringify({cartItem})
+        })
+        const stripeData = await stripeRes.json();
+        if(stripeData.url){
+          window.location.href = stripeData.url;
+        }
+         }finally{
+         load.classList.remove('show')
+       }
+      })
+      '<%}%>'
+const deleter = document.querySelectorAll('.dlist');
+const pop = document.getElementById('pop');
+ deleter.forEach( dlt=>{ 
+  console.log(dlt);
+   const deleteId= dlt.dataset.productId
+   console.log(deleteId); 
+  dlt.addEventListener('click', async ()=>{
+    console.log('clicked');
+    
+ confirm('are you sure ?') 
+   const res = await fetch(`/cart/${deleteId}`, {
+    method:'DELETE'
+   }
+ )
+   if(res.ok){ 
+  showus('deleted successfully')
+  location.reload()
+  }  else{
+    console.log(Error)
+  }
+  }
+)})
+
+</script>

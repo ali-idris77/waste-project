@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notifications</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <%- include('./partials/side.ejs') %>
+  <main>
+    <h2>Notifications</h2>
+    <% if (pops || popers) { %>
+    <% if (pop.unread && pop.unread.length > 0 || poper.unread && poper.unread.length > 0) { %>
+      <h2>unread notifications</h2>
+      <ul class="cartul">
+     <% pop.unread.forEach(pop => { %>
+      <li class="unread"> <%= pop.message %> <br> <%= pop.createdAt %> </li>
+     <% }) %>
+    <% } %> 
+     <%  if (poper.unread && poper.unread.length > 0) { %>
+     <% poper.unread.forEach(pop => { %>
+      <li class="unread"> <%= pop.message %> <br> <%= pop.createdAt %> </li>
+     <% }) %>
+     </ul>
+     <% } %> 
+     <% if (pop.read && pop.read.length > 0 || poper.read && poper.read.length > 0) { %>
+      <h2>read notifications</h2>
+      <ul class="cartul">
+     <% pop.read.forEach(pop => { %>
+      <li class="read"> <%= pop.message %> <br> <%= pop.createdAt %> </li>
+     <% }) %>
+     <% } %> 
+     <% } else{ %>
+     <p>no notifications here....</p>
+    <% } %>
+    
+</main>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded",
+    ()=>{
+      // 3 sec for user to see b4 mark as read
+      setTimeout(()=>{
+        fetch('/notification/mark-as-read', {
+          method:"PUT",
+          headers:{
+            'Content-Type':'application/json',
+          },
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log('marked as read', data);
+        })
+        .catch(err => {
+          console.error('failed to mark as read', err);
+          
+        })
+      }, 3000)
+    }
+  )
+</script>
+</html>

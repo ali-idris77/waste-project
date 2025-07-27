@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/css/styles.css" />
+ <%- include('./partials/ret.ejs', {retUrl:'/admin/users'}) %>
+<main>
+    <section class="itemDesc">
+                   <h3>username: <%=user.username %></h3>
+                   <h3>email: <%=user.email %></h3>
+                   <div class="more">
+                        <% if (user.company) { %>
+                            <p>company:<span><%= user.company %> </span></p>
+                        <% } %> 
+                        <% if (user.level) { %>
+                            <p>level:<span><%= user.level %> </span></p>
+                        <% } %> 
+                        <% if (user.tel) { %>
+                            <p>tel:<span><%= user.tel %> </span></p>
+                        <% } %> 
+                        <% if (user.address) { %>
+                            <p>address:<span><%= user.address %> </span></p>
+                        <% } %> 
+                    </div>
+         <div class="ostats">
+            <% if (user.ad_status && user.ad_status==='suspended') { %>
+              <p class="oos"> status:<span> <%= user.ad_status %></span> </p> <br>
+              <button class="elist fit-w" onclick="updateStatus('active')">activate</button>       
+            <% }else if(user.ad_status==='active' || !user.ad_status){ %>
+                <p class="active">status: <span>active</span> </p>
+                <% } %> 
+                       </div>
+                    <div class="odate"><p class="od_date">added on: <%=user.createdAt  %></p></div>
+        <div class="btn-div">
+            <button class="dlist sus" onclick="updateStatus('suspended')">suspend</button>
+            <button type="button" class="dlist" onclick="deleteIt()">delete</button>
+        </div>
+    </section>
+</main>
+<%- include('./partials/popup') %>
+<script>
+    const id = '<%= user._id%>'
+    const updateStatus = async(statusMsg)=>{
+      try{
+       const res = await fetch(`/admin/user/${id}`,{
+        method:'PUT',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            status:statusMsg
+        })
+       })
+      }finally{
+      showus('status updated')
+      location.reload()
+      }
+    }
+     const deleteIt = async()=>{
+      try{
+       const res = await fetch(`/product/${id}`,{
+        method:'DELETE',
+       })
+      }finally{
+      showus('product deleted')
+      location.href='/admin/user'
+      }
+    }
+</script>

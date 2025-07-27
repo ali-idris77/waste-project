@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="../css/styles.css" />
+<main>
+     <h1>your orders</h1>
+    <p>take care of your orders here</p>
+    <% if (user.role==='seller') { %>
+     <section class="ordered">
+    <h2>
+        Customer Orders
+    </h2>
+    <div class="orderedDiv divs">
+        <% if (ordered && ordered.length > 0) { %>
+         <ul>
+            <% ordered.forEach(order => { %>
+             <li>
+                <div class="orderlist" onclick="location.href='/order/<%=order._id%>'">
+                    <div class="prod-jpg">
+                        <% if (order.filePath) { %>
+                           <img src="<%= order.filePath%> " class="product cartI" alt="" srcset="">
+                        <% }else{ %>
+                      <img src="../images/image-regular.svg" class="product cartI" alt="">
+                      <% } %>
+                    </div>
+                    <div class="orderdes">
+                        <h3>Buyer: <%=purchaser.username  %></h3>
+                        <p>Product: <%=order.name  %></p>
+                        <p>Quantity: <%=order.qty  %></p>
+                        <p>Price: <%=order.price  %></p>
+                        <p class="order_date">Ordered on: <%=order.createdAt  %></p>
+                    </div>
+                </div>
+             </li>
+            <% }) %>
+         </ul>
+        <% }else{ %>
+            no one has ordered yet
+     <% } %>
+    </div>
+     </section >
+    <% } %>
+    <section class="orders">
+        <h2>My orders</h2>
+<div class="orderedDiv divs">
+        <% if (order && order.length > 0) { %>
+         <ul class="orderul">
+            <% order.forEach(orders => { %>
+             <li>
+                <div class="orderlist" onclick="location.href='/order/<%=orders._id%>'">
+                    <div class="prod-jpg">
+                        <% if (orders.filePath) { %>
+                           <img src="<%= orders.filePath%> " class="product cartI" alt="" srcset="">
+                        <% }else{ %>
+                      <img src="../../images/img.png" class="product orderI" alt="">
+                      <% } %>
+                    </div>
+                    <div class="orderdes">
+                        <h3>seller: <%=orders.seller %></h3>
+                        <p>Product: <%=orders.name  %></p>
+                        <p>Quantity: <%=orders.qty  %></p>
+                        <p>Price: <%=orders.price  %></p>
+                        <p class="order_date">Ordered on: <%=orders.createdAt  %></p>
+                    </div>
+                    <div class="ostats">
+                        <p class="<%= orders.paymentStatus %>">payment:<span><%= orders.paymentStatus %></span></p>
+                        <p class="<%= orders.deliveryStatus %>">Delivery:<span><%= orders.deliveryStatus %></span></p>
+                        <p class="<%= orders.orderStatus %>">Order status:<span> <%= orders.orderStatus %></span> </p>
+                    </div>
+                </div>
+             </li>
+            <% }) %>
+         </ul>
+        <% }else{ %>
+            you haven't ordered yet
+     <% } %>
+    </div>
+    </section>
+</main>

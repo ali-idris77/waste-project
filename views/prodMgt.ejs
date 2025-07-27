@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="/css/styles.css" />
+ <%- include('./partials/ret.ejs', {retUrl:'/admin/products'}) %>
+<main>
+    <section class="itemDesc">
+       <h1><%= product.name %> </h1>
+        <div class="d-jpg">
+                        <% if (product.filePath) { %>
+                           <img src="<%= product.filePath%> " alt="" srcset="">
+                        <% }else{ %>
+                      <img src="../images/img.png"  alt="">
+                      <% } %>
+                    </div>
+                   <h3>Buyer: <%=product.username %></h3>
+                   <h3>seller: <%=product.seller %></h3>
+                        <p>Quantity: <%=product.qty  %></p>
+                        <p>Price: <%=product.price  %></p>
+         <div class="ostats">
+            <% if (product.ad_status && product.ad_status==='suspended') { %>
+              <p class="oos"> status:<span> <%= product.ad_status %></span> </p> <br>
+              <button class="elist fit-w" onclick="updateStatus('active')">activate</button>       
+            <% }else if(product.ad_status==='active' || !product.ad_status){ %>
+                <p class="active">status: <span>active</span> </p>
+                <% } %> 
+                       </div>
+                    <div class="odate"><p class="od_date">added on: <%=product.createdAt  %></p></div>
+        <div class="btn-div">
+            <button class="dlist sus" onclick="updateStatus('suspended')">suspend</button>
+            <button type="button" class="dlist" onclick="deleteIt()">delete</button>
+        </div>
+    </section>
+</main>
+<%- include('./partials/popup') %>
+<script>
+    const id = '<%= product._id%>'
+    const updateStatus = async(statusMsg)=>{
+      try{
+       const res = await fetch(`/admin/products/${id}`,{
+        method:'PUT',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            status:statusMsg
+        })
+       })
+      }finally{
+      showus('status updated')
+      location.reload()
+      }
+    }
+     const deleteIt = async()=>{
+      try{
+       const res = await fetch(`/product/${id}`,{
+        method:'DELETE',
+       })
+      }finally{
+      showus('product deleted')
+      location.href='/admin/products'
+      }
+    }
+</script>

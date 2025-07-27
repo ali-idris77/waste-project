@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/964d5a64df.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/Formstyle.css" >
+<link rel="stylesheet" href="fonts/css/all.css">
+</head>
+<body>
+    <main>
+        <div class="topdiv">
+            <div class="img">  <img src="/images/IMG-20250212-WA0007 2.png" alt=""></div>
+          </div>   
+ <div class="words">
+    <h2>Create your account</h2>  
+        <form  id="signupForm" >
+            <div class="form"> 
+                <div class="feel">
+                <div id="error" class="message"></div>
+                <input type="text" name="username" placeholder="Username" id="user">
+                </div>
+                <div class="feel">
+                <div id="error" class="message"></div>
+                <input type="text" name="email" placeholder="Email" id="put1">
+                </div>
+                <div class="feel">
+                <div id="p-error" class="message "></div>
+                <input type="password" name="password" placeholder="Password" id="passw">
+                </div>
+                <div class="feeler">
+                    <h2>What do you want do in our platform</h2>
+                    <select name="role" required>
+                       <option value="buyer">buy</option> 
+                       <option value="seller">sell</option> 
+                    </select>
+            </div>
+                <button class="roe" type="submit" id="mitter">sign up</button>
+            </div> 
+        </form>
+        <div class="botdiv">
+            ALready have an account? <a href="/login">login</a>
+        </div>
+    </div>
+   
+</div>
+</main>
+<script src="/js/validate.js"></script>
+</body>
+</html>

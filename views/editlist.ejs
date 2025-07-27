@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+    <link rel="stylesheet" href="/css/list.css">
+  <link rel="stylesheet" href="css/styles.css" >
+</head>
+<%- include('./partials/popup') %>
+<body>
+  <%- include('./partials/ret.ejs', {retUrl:'/user/listings'}) %>
+
+  <main class="listForm">
+    <h2 class="h2yo">update your Product here</h2>
+    <form action="" id="updForm" data-id="<%=product._id%>"  class="formsyo">
+        <div class="formField">
+            <input type="text" name="sellerId" id="sellerId" value="<%= user._id %> " hidden class="hide"></div>
+        <div class="formField">
+            <label for="name"> Product name</label>
+            <input type="text" id="name" name="name" placeholder="product name" value="<%= product.name %> ">
+        <div class="message"></div>
+    </div>
+     <div class="formField">
+            <label for="desc">Description</label>
+            <input type="text" name="desc" id="desc" placeholder="Product Description" value="<%= product.desc %> ">
+        <div class="message"></div>
+    </div>
+        <div class="formField">
+            <label for="price">Price</label>
+            <input type="text" id="price" name="price" placeholder="product price" value="<%= product.price %> ">
+        <div class="message"></div>
+    </div>
+        <div class="formField">
+            <label for="qty">Amount/Weight(kg)</label>
+            <input type="text" id="qty" name="qty" placeholder="Product weight/Quantity" value="<%= product.qty %> "></div>
+            <button type="submit" class="last">submit</button>
+    </form>
+  <button class="last" onclick="location.href='/product/<%=product._id%>/editImage'" >re-upload image</button>
+    </main>
+    
+ <script src="/js/listPut.js"></script>
+</body>
+</html>

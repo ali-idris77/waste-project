@@ -1,0 +1,110 @@
+<main class="marketplace">
+    <header class="top-search">
+        <form action="/marketplace" method="GET">
+       <div class="searchdiv sea1">
+        <input type="text" placeholder="search..." name="search" value="<%= query.search || '' %>">
+        <button type="submit" class="ico">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+        </button>     
+       <div class="slt">
+        <select name="type" id="type">
+            <option value="">All products</option>
+            <option value="waste-product" <%= query.type === 'waste-product' ? 'selected' : '' %> >Raw waste</option>
+                <option value="recycled-waste" <%= query.type === 'recycled-waste' ? 'selected' : '' %> >Recycled waste</option>
+                <option value="recycled-product" <%= query.type === 'recycled-product' ? 'selected' : '' %> >Finished recycled goods</option>
+        </select>
+        <button type="submit">search</button>
+       </div>
+        </form>
+
+    </div>
+    </header>
+    <div class="hero">
+    <h1>welcome to the marketplace</h1>
+    <p>choose from variety of products to purchase from</p>
+    </div>
+    <section class="top ">
+        <h2>TOP LISTINGS</h2>
+        <div class="products">
+       <% if (products && products.length > 0) { %>
+            <% products.forEach(product => { %>
+            <div class="product-card" >
+    <div class="product-image">
+        <% if (product.filePath) { %>
+         <img src="<%= product.filePath %> " alt="" srcset="" class="product">
+        <% }else{ %>
+        <img src="../images/img.png" alt="" class="product">
+        <% } %>
+    </div>
+    <div class="product-desc">
+      <div class="product-desc" onclick="location.href='/product/<%= product._id%>'">
+        <span><%= product.name  %> </span>
+        <div class="descs"><span class="addrs"><%= product.type  %> </span><div class="desc-text"><%= product.desc  %> </div></div>
+        <span class="amt"><% if (product.qty) { %>
+         <%= product.qty  %>kg
+        <% }else{ %>
+             0 kg
+            <% } %> </span>
+        <span class="price"># <%= product.price %> </span>
+        <span class="rate"></span>
+        <button class="active-check">ACTIVE</button>
+     </div>
+     <button class="reserver" onclick="location.href='/product/<%= product._id%>'">
+           <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 104.43"><defs><style>.cls-1{fill-rule:evenodd;}</style></defs><title>add-to-cart</title><path class="cls-1" d="M97,0A25.9,25.9,0,1,1,78.67,7.59,25.79,25.79,0,0,1,97,0ZM3.66,10.89a3.71,3.71,0,0,1,0-7.42H9.11A17.3,17.3,0,0,1,18,5.81c4.92,3.12,5.79,7.57,7,12.59H66.7a31,31,0,0,0-.9,7.33H27.14L35.5,57.19H94.77l0-.18c.72.05,1.44.08,2.17.08a31.59,31.59,0,0,0,5.46-.48l-1.29,5.18a3.62,3.62,0,0,1-3.57,2.82H37.47c1.32,4.88,2.63,7.51,4.42,8.74,2.16,1.4,5.92,1.5,12.21,1.4H96.64a3.67,3.67,0,1,1,0,7.33H54.19c-7.79.09-12.58-.09-16.44-2.63s-6-7.14-8.07-15.31h0L17.09,16.52c0-.09,0-.09-.09-.19a6.51,6.51,0,0,0-2.82-4.22A9.51,9.51,0,0,0,9,10.89H3.66ZM60.87,33.47a2.6,2.6,0,0,1,5.11,0V47.63a2.6,2.6,0,0,1-5.11,0V33.47Zm-15.3,0a2.6,2.6,0,0,1,5.11,0V47.63a2.6,2.6,0,0,1-5.11,0V33.47ZM85.66,86.4a9,9,0,1,1-9,9,9,9,0,0,1,9-9Zm-39.55,0a9,9,0,1,1-9,9,9,9,0,0,1,9-9Zm64.08-62.91V28.3a2.09,2.09,0,0,1-2.07,2.07h-6.66V37a2.08,2.08,0,0,1-2.07,2.07H94.58A2.07,2.07,0,0,1,92.51,37V30.37H85.85a2.08,2.08,0,0,1-2.07-2.07V23.49a2.07,2.07,0,0,1,2.07-2.07h6.66V14.76a2.07,2.07,0,0,1,2.07-2.07h4.81a2.08,2.08,0,0,1,2.07,2.07v6.66h6.66a2.08,2.08,0,0,1,2.07,2.07Z"/></svg>
+        CHECK PRODUCT</button>
+</div>
+</div>
+            <% }) %>
+        <% }else{ %>
+            <h2><em>no products here right now...</em></h2>
+            <% } %>
+        </div>
+    </section>
+    <div class="img-drop">
+          
+    </div>
+    <section class="recomm">
+        <h2>RECOMMENDED FOR YOU</h2>
+         <div class="products">
+        <% if (products && products.length > 0) { %>
+            <% products.forEach(product => { %>
+             <h2><%= product.name %></h2>
+            <% }) %>
+        <% }else{ %>
+            <h2><em>no products here right now...</em></h2>
+            <% } %>
+        </div>
+    
+    </section>
+    <div class="img-drop">
+     
+    </div>
+    <section class="tag">
+        <div class="feats">
+            <div class="feat">
+                <div class="svg-hold">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M720-40v-120H600v-80h120v-120h80v120h120v80H800v120h-80ZM80-160v-240H40v-80l40-200h600l40 200v80h-40v120h-80v-120H440v240H80Zm80-80h200v-160H160v160Zm-38-240h516-516ZM80-720v-80h600v80H80Zm42 240h516l-24-120H146l-24 120Z"/></svg>
+                </div>
+                <h1 class="dig">0</h1>
+                <p class="word">Recycling companies</p>
+            </div>
+            <div class="feat">
+                <div class="svg-hold">&phone;</div>
+                <h1 class="dig">0</h1>
+                <p class="word">App Visits</p>
+            </div>
+            <div class="feat">
+                <div class="svg-hold">&#9733; &#9733; &#9733;</div>
+                <h1 class="dig">0</h1>
+                <p class="word">company Ratings</p>
+            </div>
+            <div class="feat">
+                <div class="svg-hold">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M720-40v-120H600v-80h120v-120h80v120h120v80H800v120h-80ZM80-160v-240H40v-80l40-200h600l40 200v80h-40v120h-80v-120H440v240H80Zm80-80h200v-160H160v160Zm-38-240h516-516ZM80-720v-80h600v80H80Zm42 240h516l-24-120H146l-24 120Z"/></svg>
+                </div>
+                <h1 class="dig">0</h1>
+                <p class="word">Waste Generators</p>
+            </div>
+        </div>
+    </section>
+</main>

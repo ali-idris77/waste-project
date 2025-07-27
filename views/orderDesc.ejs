@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/css/styles.css" />
+ <%- include('./partials/ret.ejs', {retUrl:'/order'}) %>
+<main>
+    <section class="itemDesc">
+       <h1><%= order.name %> </h1>
+        <div class="prod-jpg">
+                        <% if (order.filePath) { %>
+                           <img src="<%= order.filePath%> " alt="" srcset="">
+                        <% }else{ %>
+                      <img src="../images/img.png"  alt="">
+                      <% } %>
+                    </div>
+                   <h3>Buyer: <%=order.username %></h3>
+                   <h3>seller: <%=order.seller %></h3>
+                        <p>Quantity: <%=order.qty  %></p>
+                        <p>Price: <%=order.price  %></p>
+         <div class="ostats">
+                        <p class="<%= order.paymentStatus %>">payment:<span><%= order.paymentStatus %></span></p>
+                        <p class="<%= order.deliveryStatus %>">Delivery:<span><%= order.deliveryStatus %></span></p>
+                        <p class="<%= order.orderStatus %>">Order status:<span> <%= order.orderStatus %></span> </p>
+                    </div>
+                    <div class="odate"><p class="order_date">Ordered on: <%=order.createdAt  %></p></div>
+        <div class="bt-div">
+            <% if (user._id===order.sellerId) { %>
+             <button onclick="updateStatus('sent')">Sent</button>
+            <% }else{ %>
+            <button onclick="updateStatus('delivered')">Received</button>
+                <% } %>
+        </div>
+    </section>
+</main>
+<%- include('./partials/popup') %>
+<script>
+    const id = '<%= order._id%>'
+    const updateStatus = async(statusMsg)=>{
+      try{
+       const res = await fetch(`/order/${id}`,{
+        method:'PUT',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            status:statusMsg
+        })
+       })
+      }finally{
+      showus('status updated')
+      location.reload()
+      }
+    }
+     
+</script>

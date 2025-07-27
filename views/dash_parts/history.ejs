@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="../css/styles.css" />
+<main>
+     <h1>history</h1>
+    <p>view your history here</p>
+    <% if (type === 'cash') { %>
+      <% if (hist && hist.length>0) { %>
+    <% if (Hist.transHist && Hist.transHist.length) { %>
+        <h2>Transaction History</h2>
+     <ul>
+        <% Hist.transHist.forEach(ah => { %>
+         <li>
+            <%= ah.message %> <br>
+            <%= ah.createdAt %> 
+         </li>
+        <% }) %>
+     </ul>
+    <% } %>
+    <% } %> 
+    <% }else if (type === 'all'){ %>
+        <% if (hist && hist.length>0) { %>
+    <% if (Hist.adHist && Hist.adHist.length && user.role === 'admin') { %>
+        <h2>Admin History</h2>
+     <ul>
+        <% Hist.adHist.forEach(ah => { %>
+         <li>
+            <%= ah.message %> <br>
+            <%= ah.createdAt %> 
+         </li>
+        <% }) %>
+     </ul>
+    <% } %>
+    <% if (Hist.listHist && Hist.listHist.length) { %>
+        <h2>Listings History</h2>
+     <ul>
+        <% Hist.listHist.forEach(ah => { %>
+         <li>
+            <%= ah.message %> <br>
+            <%= ah.createdAt %> 
+         </li>
+        <% }) %>
+     </ul>
+    <% } %>
+    <% if (Hist.orderHist && Hist.orderHist.length) { %>
+        <h2>Order History</h2>
+     <ul>
+        <% Hist.orderHist.forEach(ah => { %>
+         <li>
+            <%= ah.message %> <br>
+            <%= ah.createdAt %> 
+         </li>
+        <% }) %>
+     </ul>
+    <% } %>
+    <% if (Hist.transHist && Hist.transHist.length) { %>
+        <h2>Transaction History</h2>
+     <ul>
+        <% Hist.transHist.forEach(ah => { %>
+         <li>
+            <%= ah.message %> <br>
+            <%= ah.createdAt %> 
+         </li>
+        <% }) %>
+     </ul>
+    <% } %>
+   <% } %>
+        <% } %> 
+   </main>
+

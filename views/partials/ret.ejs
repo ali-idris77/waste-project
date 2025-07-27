@@ -1,0 +1,26 @@
+<style>
+    .ret-div{
+        position: absolute;
+        top: 1%;
+        left: 3%;
+        padding: 20px;
+        border: 4px solid #10250a;
+        border-radius: 50%;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .ret-div:hover{
+        transform: scale(1.1);
+    }
+    .ret-div:active{
+        transform: scale(0.8);
+        opacity: 0.8;
+    }
+    .ret-div svg{
+        height: 35px;
+        width: 35px;
+        fill: #10250a;
+    }
+</style>
+<a href="<%= retUrl %> " class="ret-div" id="ret" >
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+</a>

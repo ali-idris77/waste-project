@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+    <link rel="stylesheet" href="/css/list.css">
+  <link rel="stylesheet" href="css/styles.css" >
+</head>
+<%- include('./partials/popup') %>
+<body>
+  <%- include('./partials/ret.ejs', {retUrl:'/user/listings'}) %>
+
+  <main class="listForm">
+    <div class="img">
+         <h2 class="h2yo"> update product image here </h2>
+<form action="" id="updImgForm"data-id="<%=product._id%>" enctype="multipart/form-data" class="formsyo">
+      <div class="formField">
+            <label for="img">upload product image</label>
+            <input type="file" id="image" name="image" placeholder="Product image here" 
+            class="upload"
+            accept="image/*"></div>
+            <button type="submit" class="last">submit</button>
+</form>
+    </div>
+    </main>
+</body>
+</html>
+<script>
+    const imgForm = document.getElementById('updImgForm')
+    const id = imgForm.dataset.id
+
+
+    imgForm.addEventListener('submit', async (e)=>{
+   e.preventDefault();
+console.log('clicked');
+
+   const formImg = imgForm.image.files[0]
+   console.log(formImg);
+   const form = e.target;
+   const formData = new FormData(form)
+   for (let [key, value] of formData.entries()){
+    console.log(key, value);
+    
+   }
+   
+   try{
+     const res = await fetch(  `/product/${id}/editImage`,{
+        method: 'PUT',
+        body: formImg
+    })
+    if(!res.ok){
+      const data =await res.json
+      console.log(data);
+      
+    }
+   }catch(err){
+      console.log(err);
+   } finally{
+    showus('image updated')
+   } 
+})
+
+</script>

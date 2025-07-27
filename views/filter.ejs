@@ -1,0 +1,74 @@
+<style>
+ *{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+ }
+ .filter-card{
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border: 2px solid;
+    width: fit-content;
+    height: 50vh;
+ }
+ .topclass p:not(li>p){
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 3px solid #2e4f38;
+    width: 200px;
+ }
+ .topclass li{
+     list-style: none;
+     padding: 10px 20px;
+ }
+ .topclass li p{
+    font-size: 1.1rem;
+ }
+ .last-prm{
+    font-size: 1.5rem;
+ }
+ .topclass ul{
+    overflow: hidden;
+    height: 0;
+ }
+ .topclass:has(.checker:checked) ul{
+    height: fit-content;
+ }
+ .checker{
+    display: none;
+ }
+</style>
+<div class="filter-card">
+    <div class="topclass"> <input type="checkbox" name="drop-check" id="drop-check" class="checker"> <label for="drop-check">
+        <p>Material Type
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
+        </p></label>
+        <ul>
+            <li>
+                <p>lorem</p>
+            </li>
+            <li>
+                <p>ipsum</p>
+            </li>
+        </ul>
+    </div>
+    <div class="topclass"> <input type="checkbox" name="drop-check2" id="drop-check2" class="checker"> <label for="drop-check2">
+        <p>Location
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
+        </p></label>
+        <ul>
+            <li>
+                <p>dolor</p>
+            </li>
+            <li>
+                <p>si amet</p>
+            </li>
+        </ul>
+    </div>
+    <p class="last-prm">Quantity</p>
+</div>

@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="/css/styles.css" />
+ <%- include('./partials/ret.ejs', {retUrl:'/user/listings'}) %>
+<main>
+    <section class="itemDesc mgt">
+       <h1><%= listed.name %> </h1>
+        <div class="d-jpg">
+                        <% if (listed.filePath) { %>
+                           <img src="<%= listed.filePath%> " alt="product image" srcset="">
+                        <% }else{ %>
+                      <img src="/images/img.png"  alt="">
+                      <% } %>
+                    </div>
+                        <p>Quantity: <%=listed.qty  %></p>
+                        <p>Price: <%=listed.price  %></p>
+                    <div class="odate"><p class="list_date">listed on: <%=listed.createdAt  %></p></div>
+                    <div class="ostats stats">
+                        <% if (listed.status) { %>
+            <% if (listed.status==="limited supply") { %>
+             <p class="ls">Quantity status: <span>limited supply</span></p>
+            <% }else if (listed.status==="out of stock"){ %>
+             <p class="oos">Quantity status: <span>out of stock</span></p>
+            <% }else{ %>
+                <p class="successful">Quantity status: <span>In stock</span></p> 
+            <% } %> 
+            <% }else{ %>
+             <p class="successful">Quantity status: <span>In stock</span></p>
+            <% } %>
+                    </div>
+                    <div class="stat" >
+                        <h3>
+                            click the buttons to update the Quantity status:
+                        </h3>
+                        <div class="bts"><button class="elist cc" onclick="updateStatus('In stock')">In stock</button></div>
+                        <div class="bts"><button class="mlist cc" onclick="updateStatus('limited supply')">limited supply</button></div>
+                    <div class="bts"><button class="dlist cc" onclick="updateStatus('out of stock')">out of stock</button></div>
+                    </div>
+        <div class="btn-div">
+        <button class="elist cc" onclick="location.href='/product/<%= listed._id%>/edit'">edit</button> 
+        <button class="dlist cc" onclick="deleteIt()">delete</button>
+        </div>
+    </section>
+</main>
+<%- include('./partials/popup') %>
+<script>
+    const id = '<%= listed._id%>'
+    const updateStatus = async(statusMsg)=>{
+      try{
+       const res = await fetch(`/user/listings/${id}`,{
+        method:'PUT',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            status:statusMsg
+        })
+       })
+      }finally{
+      showus('status updated')
+      location.reload()
+      }
+    }
+     const deleteIt = async()=>{
+      try{
+       const res = await fetch(`/product/${id}`,{
+        method:'DELETE',
+       })
+      }finally{
+      showus('product deleted')
+      location.href='/user/listings'
+      }
+    }
+</script>

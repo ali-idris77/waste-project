@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+    <link rel="stylesheet" href="/css/list.css">
+  <link rel="stylesheet" href="css/styles.css" >
+</head>
+<body>
+  <%- include('./partials/side.ejs') %>
+  <main class="listForm">
+    <a href="/user/listings" class="escape">
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+    <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+    </a>
+    <h2>List your Product here</h2>
+    <form action="" id="lisForm" enctype="multipart/form-data">
+        <div class="formField">
+            <input type="text" name="sellerId" id="sellerId" value="<%= user._id %> " hidden class="hide"></div>
+        <div class="formField">
+            <label for="name"> Product name</label>
+            <input type="text" id="name" name="name" placeholder="product name" >
+        <div class="message"></div>
+    </div>
+        <div class="formField">
+            <label for="type">Type</label>
+            <select name="type" id="type" >
+                <option value="waste-product">Raw waste</option>
+                <option value="recycled-waste">Recycled waste</option>
+                <option value="recycled-product">Finished recycled goods</option>
+            </select></div>
+        <div class="formField">
+            <label for="desc">Description</label>
+            <input type="text" name="desc" id="desc" placeholder="Product Description">
+        <div class="message"></div>
+    </div>
+        <div class="formField">
+            <label for="price">Price</label>
+            <input type="text" id="price" name="price" placeholder="product price">
+        <div class="message"></div>
+    </div>
+        <div class="formField">
+            <label for="qty">Amount/Weight(kg)</label>
+            <input type="text" id="qty" name="qty" placeholder="Product weight/amount"></div>
+        <div class="formField">
+            <label for="img">upload product image</label>
+            <input type="file" id="image" name="image" placeholder="Product image here" 
+            accept="image/*" required></div>
+        
+            <button type="submit" class="last">submit</button>
+    </form>
+    </main>
+    <script src="/js/listPost.js"></script>
+</body>
+</html>
